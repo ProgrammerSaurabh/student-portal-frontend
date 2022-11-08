@@ -10,16 +10,18 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 ChartJS.defaults.responsive = true;
 ChartJS.defaults.maintainAspectRatio = false;
 
-const PieChart = () => {
+const PieChart = ({ location }) => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    loadPieChart();
-  }, []);
+    loadPieChart(location);
+  }, [location]);
 
-  const loadPieChart = async () => {
+  const loadPieChart = async (location) => {
     try {
-      const { data } = await axios.get('/dashboard/pie-chart');
+      const { data } = await axios.get(
+        '/dashboard/pie-chart?location=' + location
+      );
 
       setData({
         labels: [

@@ -43,16 +43,18 @@ const options = {
   },
 };
 
-const StackBar = () => {
+const StackBar = ({ location }) => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    loadStackBar();
-  }, []);
+    loadStackBar(location);
+  }, [location]);
 
-  const loadStackBar = async () => {
+  const loadStackBar = async (location) => {
     try {
-      const { data } = await axios.get('/dashboard/stack-bar');
+      const { data } = await axios.get(
+        '/dashboard/stack-bar?location=' + location
+      );
 
       setData({
         labels: [

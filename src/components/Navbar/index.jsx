@@ -30,7 +30,6 @@ function Navbar() {
                 title={user?.first_name + ' ' + user?.last_name}
                 id='basic-nav-dropdown'
               >
-                <NavDropdown.Item href='/dashboard'>Dashboard</NavDropdown.Item>
                 <NavDropdown.Item onClick={logout}>Logout</NavDropdown.Item>
               </NavDropdown>
             </>
